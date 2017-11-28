@@ -17,5 +17,17 @@ public class Book{
 	return title + "," +  author + "," +  ISBN;
     }
 
+    public void setAuthor(String author){
+	this.author = author;
+    }
+
+    public void setISBN(String ISBN){
+	this.ISBN = ISBN;
+    }
+    
+    public void setTitle(String title){
+	this.title = title;
+    }
+
     
 }
