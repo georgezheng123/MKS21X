@@ -29,5 +29,17 @@ public class Book{
 	this.title = title;
     }
 
+    public String getAuthor(String author){
+	return author;
+    }
+
+    public String getISBN(String ISBN){
+	return ISBN;
+    }
+    
+    public String getTitle(String title){
+	return title;
+    }
+
     
 }
