@@ -19,7 +19,7 @@ public class Barcode {
 
     		bar += conversions[Character.getNumericValue(c)];
     	}
-    	return bar;
+    	return '|' + bar + checksum(zip) + '|';
     }
 
     public String toZip(String code){
@@ -45,6 +45,14 @@ public class Barcode {
     	}
     	throw new IllegalArgumentException();
 
+    }
+
+    public static int checksum(String zip){
+        int ans = 0;
+        for (int i=0; i<zip.length(); i++){
+            ans += Integer.parseInt(zip.substring(i, i+1));
+        }
+        return ans % 10 ;
     }
 
 
