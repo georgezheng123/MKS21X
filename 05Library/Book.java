@@ -29,15 +29,15 @@ public class Book{
 	this.title = title;
     }
 
-    public String getAuthor(String author){
+    public String getAuthor(){
 	return author;
     }
 
-    public String getISBN(String ISBN){
+    public String getISBN(){
 	return ISBN;
     }
     
-    public String getTitle(String title){
+    public String getTitle(){
 	return title;
     }
 
