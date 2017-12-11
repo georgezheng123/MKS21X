@@ -36,7 +36,7 @@ public class Sorts{
 
   public static void insertionSort(int[] data){ 
     int j = 1; 
-    while (j <= data.length) {  
+    while (j < data.length) {  
         int current=data[j];  
         int i = j-1;  
         while (i>-1 && data[i]>current) {  
@@ -50,7 +50,7 @@ public class Sorts{
     public static void bubbleSort(int arr[]){
         for(int i = 0; i <arr.length-1; i++)
             for(int j = 0; j<arr.length-i-1; j++)
-                if (arr[j+1] <= arr[j]){
+                if (arr[j+1] < arr[j]){
                     int holder = arr[j];
                     arr[j] = arr[j+1];
                     arr[j+1] = holder;
