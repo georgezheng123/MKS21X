@@ -36,10 +36,10 @@ public class Sorts{
 
   public static void insertionSort(int[] data){ 
     int j = 1; 
-    while (j < data.length) {  
-        int current = data[j];  
+    while (j <= data.length) {  
+        int current=data[j];  
         int i = j-1;  
-        while (i > -1 && data[i] > current) {  
+        while (i>-1 && data[i]>current) {  
             data[i+1] = data[i];  
             i--;  
         }  
