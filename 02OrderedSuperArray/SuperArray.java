@@ -8,6 +8,11 @@ public class SuperArray{
 	size = 0;
     }
 
+    public SuperArray(int len){
+	data = new String[len]; 
+	size = len;
+    }
+
     public void clear(){
 	size = 0;
     }
@@ -91,7 +96,7 @@ public class SuperArray{
 	data = updated;
     }
     
-    public void add(int index, String element){
+    public boolean add(int index, String element){
 	if (index < 0 || index >= size || index >= data.length){
 	    System.out.println("out of range error");
 	}
@@ -106,6 +111,7 @@ public class SuperArray{
 	updated[index] = element;
 	data = updated;
 	size += 1;}
+return true;
     }
 
     public int indexOf(String element){

@@ -64,7 +64,7 @@ public class Benchmark{
 		    sort(arrays[i+j],method);
 		}
 		end = System.currentTimeMillis();
-		System.out.print(end-start+",");
+		System.out.print(end-start+"	");
 	    }
 	    System.out.println();
 
