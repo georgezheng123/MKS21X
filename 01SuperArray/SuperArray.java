@@ -97,9 +97,9 @@ public class SuperArray{
     }
     
     public void add(int index, String element){
-	if (index < 0 || index >= size || index >= data.length){
-	    System.out.println("out of range error");
-	}
+	if (index>size() || index<0){
+      throw new IndexOutOfBoundsException();
+}
 	else{
 	String[] updated = new String[size+1];
 	for (int i=0; i<index; i++){
