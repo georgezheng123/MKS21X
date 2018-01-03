@@ -41,16 +41,14 @@ public class SuperArray{
 
     public String get(int index){
 	if (index < 0 || index >= size()){
-	    System.out.println("out of range error");
-	    return null;
+	    throw new IndexOutOfBoundsException();
 	}
 	return data[index];
     }
 
     public String set(int index, String element){
 	if (index < 0 || index >= size()){
-	    System.out.println("out of range error");
-	    return null;
+	    throw new IndexOutOfBoundsException();
 	}
 	String[] updated = new String[size];
 	String toReturn = get(index);

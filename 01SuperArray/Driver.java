@@ -6,6 +6,7 @@ public class Driver{
     public static void main(String[] args) {
         for (int i=0; i<10; i++){
         runTest01(i);}
+        
     }
 	public static void runTest01(int testID){
   if(testID<0){
