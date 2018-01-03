@@ -26,17 +26,25 @@ public class driver {
     if(testID == 1 ){
       s1.add("4");
       s2.add("4");
+      s2.add("4");
       s1.add("1");
       s2.add("1");
+      s2.add("4");
       s1.add("0");
+      s1.add("4");
       s2.add("0");
+      s1.add("4");
     }
     
     if(testID == 2 ){
       s1.add("3");
       s2.add("3");
+      s1.add("0");
+      s2.add("0");
       s1.add("1");
       s2.add("1");
+      s1.add("0");
+      s2.add("0");
       s1.add("5");
       s2.add("5");
       s1.add("0");
@@ -46,6 +54,10 @@ public class driver {
     if(testID == 3 ){
       s1.add("1");
       s2.add("1");
+            s1.add("0");
+      s2.add("0");
+      s1.add("5");
+      s2.add("5");
       for(int i = 0; i < 10; i ++){
         String v = ""+(int)(Math.random()*1000);
         int in = (int)(Math.random()*s2.size());

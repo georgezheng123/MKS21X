@@ -21,8 +21,8 @@ public String set(int index, String element){
   }
 
   /*call the proper add.*/
-  public boolean add(int index, String value){
-    return add(value);
+  public void add(int index, String value){
+    add(value);
   }
 
   /*Write this method and any
@@ -34,7 +34,7 @@ public String set(int index, String element){
         return true;
       }
     }
-    super.add(value);
+    super.add(size(),value);
   
     return true;
   }
