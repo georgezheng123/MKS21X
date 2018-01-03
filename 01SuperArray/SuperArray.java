@@ -137,7 +137,6 @@ public class SuperArray{
 
     public String remove(int index){
 	if (index < 0 || index >= size()){
-	    System.out.println("out of range error");
 	    return null;
 	}
 	String toReturn = data[index];
