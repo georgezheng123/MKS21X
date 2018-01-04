@@ -1,11 +1,24 @@
-public class SuperArray{ 
+import java.util.*;
+
+public class SuperArray implements Iterable<String>{ 
 
     private String[] data;
     private int size;
+
+    public Iterator<String> iterator(){
+    	SuperArrayIterator ans = new SuperArrayIterator(this);
+    	return ans;
+  	}
+
     
     public SuperArray(){
 	data = new String[10]; 
 	size = 0;
+    }
+
+    public SuperArray(int len){
+	data = new String[len]; 
+	size = len;
     }
 
     public void clear(){
@@ -36,16 +49,14 @@ public class SuperArray{
 
     public String get(int index){
 	if (index < 0 || index >= size()){
-	    System.out.println("out of range error");
-	    return null;
+	    throw new IndexOutOfBoundsException();
 	}
 	return data[index];
     }
 
     public String set(int index, String element){
 	if (index < 0 || index >= size()){
-	    System.out.println("out of range error");
-	    return null;
+	    throw new IndexOutOfBoundsException();
 	}
 	String[] updated = new String[size];
 	String toReturn = get(index);
@@ -92,9 +103,9 @@ public class SuperArray{
     }
     
     public void add(int index, String element){
-	if (index < 0 || index >= size || index >= data.length){
-	    System.out.println("out of range error");
-	}
+	if (index>size() || index<0){
+      throw new IndexOutOfBoundsException();
+}
 	else{
 	String[] updated = new String[size+1];
 	for (int i=0; i<index; i++){
@@ -134,7 +145,6 @@ public class SuperArray{
 
     public String remove(int index){
 	if (index < 0 || index >= size()){
-	    System.out.println("out of range error");
 	    return null;
 	}
 	String toReturn = data[index];
@@ -160,5 +170,7 @@ public class SuperArray{
 	this.remove(index);
 	return true;
     }
+
+
 }	
 

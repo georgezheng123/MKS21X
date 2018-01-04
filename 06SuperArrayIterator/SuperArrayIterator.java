@@ -6,18 +6,16 @@ public class SuperArrayIterator implements Iterator<String> {
   private int index;
 
   public SuperArrayIterator(SuperArray arr) {
-        this.data = arr;
+        this.arr = arr;
         this.index = 0;
   }
 
   public boolean hasNext(){
-        return index < data.size();
+        return index < arr.size();
   }
 
   public String next(){
-        String next = next.get(index);
-        index++;
-        return result;
+        return arr.get(index++);
   }
 
 }
