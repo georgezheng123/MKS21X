@@ -9,39 +9,52 @@ public class Barcode {
     		throw new IllegalArgumentException();
     	}
     	zipcode = zip;
-    	barcode = '|' + toCode(zip) + '|';
+    	barcode = toCode(zip);
     }
 
     private static String toCode(String zip){
+        if (zip.length() != 5 || !zip.matches("[0-9]+")) {
+            throw new IllegalArgumentException();
+        }
+
+        zip = zip + checksum(zip);
     	String bar = "";
     	String[] conversions = {"||:::", ":::||", "::|:|", "::||:", ":|::|", ":|:|:", ":||::", "|:::|", "|::|:", "|:|::"};
     	for (char c : zip.toCharArray() ){
-
     		bar += conversions[Character.getNumericValue(c)];
     	}
-    	return '|' + bar + checksum(zip) + '|';
+    	return '|' + bar + '|';
     }
 
-    public String toZip(String code){
+    public static String toZip(String code){
     	String ans = "";
     	if (code.length() != 32) throw new IllegalArgumentException();
     	for (char c: code.toCharArray() ){
     			if (c != '|' && c != ':') throw new IllegalArgumentException();
     	}
     	if (code.toCharArray()[0] != '|' || code.toCharArray()[31] != '|') throw new IllegalArgumentException();
-    	code = code.substring(1,31);
-    	for (int i=0; i<6; i++){
-    		String numbSect = code.substring(i*5,(i+1)*5)+1;
+        String givenChecksumCode = code.substring(27,31);
+        code = code.substring(1,26);
+    	for (int i=0; i<5; i++){
+    		String numbSect = code.substring(i*5,(i+1)*5);
     		ans += zipHelper(numbSect);
     	}
+        int givenChecksum = -999;
+        String[] conversions = {"||:::", ":::||", "::|:|", "::||:", ":|::|", ":|:|:", ":||::", "|:::|", "|::|:", "|:|::"};
+        for (int i=0; i<conversions.length; i++){
+            if (conversions[i].equals(givenChecksumCode)) givenChecksum = i;
+        }
+        if (givenChecksum != checksum(ans)) throw new IllegalArgumentException();
+
+
     	return ans;
 
     }
 
-    private String zipHelper(String section){
-    	String[] conversions = {"||:::", ":::||", "::|:|", "::||:", ":|::|", ":|:|:", ":||::", "|:::|", "|::|:", "|:|::"};
+    private static String zipHelper(String section){
+        String[] conversions = {"||:::", ":::||", "::|:|", "::||:", ":|::|", ":|:|:", ":||::", "|:::|", "|::|:", "|:|::"};
     	for (int i=0; i<conversions.length; i++){
-    		if (conversions[i] == section) return "" + i;
+    		if (conversions[i].equals(section)) return "" + i;
     	}
     	throw new IllegalArgumentException();
 
@@ -60,6 +73,10 @@ public class Barcode {
     	return Integer.parseInt(this.getZip()) - Integer.parseInt(other.getZip());
     }
 
+     public Boolean equals(Barcode other){
+        return compareTo(other) == 0;
+    }
+
 
     public String getZip(){
     	return zipcode;
@@ -69,9 +86,9 @@ public class Barcode {
     	return barcode;
     }
 
-
-
     public String toString(){
     	return barcode + " (" + zipcode + ") ";
     }
+
+
 }
