@@ -12,7 +12,7 @@ public class Barcode {
     	barcode = toCode(zip);
     }
 
-    private static String toCode(String zip){
+    public static String toCode(String zip){
         if (zip.length() != 5 || !zip.matches("[0-9]+")) {
             throw new IllegalArgumentException();
         }
