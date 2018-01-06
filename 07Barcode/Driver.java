@@ -2,24 +2,11 @@ public class Driver {
 
     public static void main(String[] args) {
 
-        String[]badBarcodes = {"|||:::||:::||:::||:::||:::||:::",
-      "|||:::||:::||:::||:::||:::||:::||||",
-      "|||:::||:::||:::||:::||:::||::::",
-      ":||:::||:::||:::||:::||:::||:::|",
-      "||:|::||z::|:|::||::f:::|||:|::|",
-      "|:::||||:::a::||||::::::||::||:|",
-      "|||:::||:::||:::||:::||::::::|||"    };
-String[] badZips = {"9012",      "000000",      "12x34"};
-	
-		for (String i: badZips){
-			try{
-        Barcode a = new Barcode(i);
-      } catch(IllegalArgumentException e){
-        System.out.println(i);
-      }
-		}
-
-
-    }
+if(Barcode.toZip(Barcode.toCode("94322")).equals("94322") ) {
+          System.out.println("Test "+"testID"+",PASS");
+          System.exit(0);
+        }
+        
+        }
 
 }

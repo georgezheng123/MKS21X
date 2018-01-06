@@ -1,4 +1,4 @@
-public class Barcode {
+public class Barcode implements Comparable<Barcode> {
 
 	private String barcode;
 	public String zipcode;
@@ -33,7 +33,7 @@ public class Barcode {
     			if (c != '|' && c != ':') throw new IllegalArgumentException();
     	}
     	if (code.toCharArray()[0] != '|' || code.toCharArray()[31] != '|') throw new IllegalArgumentException();
-        String givenChecksumCode = code.substring(27,31);
+        String givenChecksumCode = code.substring(26,31);
         code = code.substring(1,26);
     	for (int i=0; i<5; i++){
     		String numbSect = code.substring(i*5,(i+1)*5);
@@ -44,7 +44,11 @@ public class Barcode {
         for (int i=0; i<conversions.length; i++){
             if (conversions[i].equals(givenChecksumCode)) givenChecksum = i;
         }
-        if (givenChecksum != checksum(ans)) throw new IllegalArgumentException();
+        if (givenChecksum != checksum(ans)) {
+            System.out.println(givenChecksumCode);
+            System.out.println(givenChecksum);
+            System.out.println(checksum(ans));
+            throw new IllegalArgumentException();}
 
 
     	return ans;
